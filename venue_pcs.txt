@@ -1,0 +1,18 @@
+Victoria Pcs, Birmingham Pcs,  Haggerston Pcs
+pod-1.victoria.other.world, pod-1.birmingham.other.world, pod-1.haggerston.other.world
+pod-2.victoria.other.world, pod-2.birmingham.other.world, pod-2.haggerston.other.world
+pod-3.victoria.other.world, pod-3.birmingham.other.world, pod-3.haggerston.other.world
+pod-4.victoria.other.world, pod-4.birmingham.other.world, pod-4.haggerston.other.world
+pod-5.victoria.other.world, pod-5.birmingham.other.world, pod-5.haggerston.other.world
+pod-6.victoria.other.world, pod-6.birmingham.other.world, pod-6.haggerston.other.world
+pod-7.victoria.other.world, pod-7.birmingham.other.world, pod-7.haggerston.other.world
+pod-8.victoria.other.world, pod-8.birmingham.other.world, pod-8.haggerston.other.world
+pod-9.victoria.other.world, pod-9.birmingham.other.world, pod-9.haggerston.other.world
+pod-10.victoria.other.world, pod-10.birmingham.other.world, pod-10.haggerston.other.world
+none, pod-11.birmingham.other.world, pod-11.haggerston.other.world
+none, pod-12.birmingham.other.world, pod-12.haggerston.other.world
+none, pod-13.birmingham.other.world, pod-13.haggerston.other.world
+none, pod-14.birmingham.other.world, pod-14.haggerston.other.world
+none, pod-15.birmingham.other.world, none
+none, pod-16.birmingham.other.world, none
+none, pod-17.birmingham.other.world, none

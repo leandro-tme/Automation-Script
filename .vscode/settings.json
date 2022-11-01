@@ -1,0 +1,8 @@
+{
+    "jupyter.kernels.filter": [
+        {
+            "path": "c:\\Python39\\python.exe",
+            "type": "pythonEnvironment"
+        }
+    ]
+}
