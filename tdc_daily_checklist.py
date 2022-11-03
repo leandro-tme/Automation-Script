@@ -6,6 +6,7 @@ import csv
 
 
 
+# communicate with salt to obtain correct file from salt master and compare minion file to file on database
 
 def check_viveconsole_settings():
    
