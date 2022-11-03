@@ -24,7 +24,7 @@ def check_viveconsole_settings():
             #client.cmd(row[1] , "saltutil.running")
             #client.cmd(row[2] , "saltutil.running")
             line_count += 1
-    
+            #hello
     print(f'Processed {line_count} lines.')
             
 
