@@ -35,4 +35,5 @@ def __virtual_vive_viveconsole_settings__():
         log.info("The vive_settings were applied correctly during schedule!")
 
 __virtual_vive_viveconsole_settings__()        
-        
+
+//TEST
