@@ -22,18 +22,16 @@ for row in csv_reader:
        RESULTS = True
     except ImportError:
         RESULTS = False  // We would use this exception thrown as an indication on what pods will require to have the highstate re-applied.
-  
+        failed_pods.append(row) // appends all the corresponding pods to the failed list when the execption is thrown.
+
 def __virtual_vive_viveconsole_settings__():
    "
    This function will now load all the failed pods where '''apply_vive_settings''' returned as False and will run the state again accordingly
    "
    if RESULTS == False:
-         failed_pods.append(row) // appends all the corresponding pods to the failed list when the execption is thrown.
          return client.cmd('failed_pods','state.apply) // using 'state.apply' instead of 'state.highstate' assuming that there was issues after scheduled state deployment
          log.info("The vive_settings have been re-applied successfully")
     else:
         log.info("The vive_settings were applied correctly during schedule!")
 
 __virtual_vive_viveconsole_settings__()        
-
-//TEST
