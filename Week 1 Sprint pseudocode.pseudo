@@ -1,0 +1,38 @@
+import salt.config
+import salt.client
+import csv
+import logging
+
+log = logging.getLogger(__name__)
+failed_pods = []
+
+"
+I chose LocalClient over Caller class because of having the ability to execute modules by sending commands to the minions
+"
+master_opts = salt.config.client_config('/etc/salt/master')
+client = salt.client.LocalClient() 
+
+with open("venue_pcs.txt") as csv_file:
+csv_reader =csv.reader(csv_file, delimeter=",")
+
+for row in csv_reader:
+    try:
+       import apply_vive_settings // assuming we consider vive settings as a depending utility.
+       
+       RESULTS = True
+    except ImportError:
+        RESULTS = False  // We would use this exception thrown as an indication on what pods will require to have the highstate re-applied.
+  
+def __virtual_vive_viveconsole_settings__():
+   "
+   This function will now load all the failed pods where '''apply_vive_settings''' returned as False and will run the state again accordingly
+   "
+   if RESULTS == False:
+         failed_pods.append(row) // appends all the corresponding pods to the failed list when the execption is thrown.
+         return client.cmd('failed_pods','state.apply) // using 'state.apply' instead of 'state.highstate' assuming that there was issues after scheduled state deployment
+         log.info("The vive_settings have been re-applied successfully")
+    else:
+        log.info("The vive_settings were applied correctly during schedule!")
+
+__virtual_vive_viveconsole_settings__()        
+        
