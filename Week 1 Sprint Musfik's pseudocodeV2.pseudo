@@ -1,16 +1,18 @@
 "
 I promise this is pseudocode even though it really isn't LOL
-Plan for v2, thanks to Leandro for showing me https://docs.saltproject.io/en/latest/ref/netapi/all/salt.netapi.rest_cherrypy.html and implementing it using the requests library in python
+Plan for v2: Thanks to Leandro for showing me https://docs.saltproject.io/en/latest/ref/netapi/all/salt.netapi.rest_cherrypy.html ; I implemented it using the requests library in python.
+
 To use the rest_cherrypy module we need to do the following on the salt master config:
 rest_cherrypy:
   port: 8000
   ssl_crt: /etc/pki/tls/certs/localhost.crt
   ssl_key: /etc/pki/tls/certs/localhost.key
 
+Thought process:
 use salt minion and establish a connection to salt master so we can call requests
 once job requests are received put them in a csv file
 figure out what job id would be vive_settings
-call the id during the virtual method to figure out which pods failed the apply_vive_settings settings
+call the id during the virtual method (method to return error information) to figure out which pods failed the apply_vive_settings settings
 then proceed to run the state.apply to the failed pods
 "
 
@@ -23,8 +25,8 @@ import logging
 log = logging.getLogger(__name__)
 failed_pods = []
 
-minion_opts = salt.config.minion_config('/etc/salt/minion') // General directory for minions (to be updated from the configuration we have set with Saltstack) 
-request = requests.get('https://localhost:8000/jobs') //Following variable grabs all the jobs from corresponding pods
+minion_opts = salt.config.minion_config('/etc/salt/minion') //General directory for minions (to be updated from the configuration we have set with Saltstack) 
+request = requests.get('https://localhost:8000/jobs') //Following variable grabs all the jobs from corresponding pods (general address used as an assumption, to be changed with specific directory address)
 
 with open("jobs.txt") as csv_file:
 csv_reader =csv.reader(csv_file, delimeter=",")
@@ -35,7 +37,7 @@ for row in csv_reader:
        vive_settings = request.get('https://localhost:8000/jobs/apply_vive_settings') //This is where we would get the corresponding ID for apply_vive_settings so we can look at which jobs come back with 400 bad request.
        vive_settings.raise_for_status() // No Exception will be thrown if the request we get back is 200 (success) as we are not worried if the request is completed with no problems.
 
-       except Exception as 400:
+       except Exception as 400: //Assuming we can take '400' as an integer variable.
            failed_pods.append(row) //When a bad request is thrown, all the corresponding pods will be added to a new list. Which we will use to reapply the settings.
            print(f'Vive settings were not applied correctly due to bad request: {400}')
 
@@ -45,14 +47,13 @@ def __virtual_vive_viveconsole_settings__():
 "
   if vive_settings.status_code == 400:
        for i in failed_pods:
-           request.post('https://localhost:8000/jobs/state.apply') // We execute the following post request to apply the state.apply to get the correct apply_vive_settings being to the pods that failed earlier during their scheduled jobs. (We just need the corresponding ID for state.apply to get this request to work.)
+           request.post('https://localhost:8000/jobs/state.apply') //We execute the following post request to apply the state.apply to get the correct apply_vive_settings being to the pods that failed earlier during their scheduled jobs. (We just need the corresponding ID for state.apply to get this request to work.)
   else:
       log.info("The vive_settings were applied correctly during schedule!")
       
 __virtual_vive_viveconsole_settings__()              
 
-
-//alternative method underneath uses a while loop instead to exhaust the condition until the bad request is clear and met.
+//Alternative method underneath uses a while loop instead to exhaust the condition until the bad request is clear and met.
 "
 def __virtual_vive_viveconsole_settings__():
 "
