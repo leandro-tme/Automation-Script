@@ -1,4 +1,5 @@
 "
+I promise this is pseudocode even though it really isn't LOL
 Plan for v2, thanks to Leandro for showing me https://docs.saltproject.io/en/latest/ref/netapi/all/salt.netapi.rest_cherrypy.html and implementing it using the requests library in python
 To use the rest_cherrypy module we need to do the following on the salt master config:
 rest_cherrypy:
