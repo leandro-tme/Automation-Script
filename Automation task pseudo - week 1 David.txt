@@ -6,25 +6,26 @@ import dependencies
 
 def getJobs()
 	
-	jobs = json.load(GET /jobs) // get results in json format using saltstack rest API request
+	jobs = json.load(GET /jobs) // get results in json format using saltstack rest API request. json.load decodes the json dictionary
 
 
-def iterateThroughJobs(jobs) //iterate through json to get each job id
+def iterateThroughJobs(jobs) //iterate through json to get each job id. Gets each job id that has been ran, then it sends each job id into read job
 	for i in jobs['jid']:
 		jid = i
-		readJobs(jid) // get and read each job json file
+		readJob(jid) // get and read each job json file
 		
 
 def readJob(jid)
 	job = json.load(GET /jobs/jid) // get job in json format using saltstack rest API request 
 	
 	
-	for i in jobs // check fields ID and Result
-		if i['Result'] == True 
-			print(pass)
-		else if i['Results'] == False
-			print(failed + rerun)
-			rerunFile(i['ID']) // rerun specific file in job using file ID
+	for i in job // check fields ID and Result
+		if i['ID'] == apply_vive_settings
+			if i['Result'] == True 
+				print(pass)
+			else if i['Results'] == False
+				print(failed + rerun)
+				rerunFile(i['ID']) // rerun specific file in job using file ID
 
 
 ///////////ALTERNATIVE: If checking and running whole job ///////
