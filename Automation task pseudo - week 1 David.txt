@@ -1,0 +1,45 @@
+//THIS IS PSEUDOCODE WITHOUT FULL CODE IMPLEMENTATION OF API REQUESTS AND RERUN METHOD
+
+
+import dependencies
+
+
+def getJobs()
+	
+	jobs = json.load(GET /jobs) // get results in json format using saltstack rest API request
+
+
+def iterateThroughJobs(jobs) //iterate through json to get each job id
+	for i in jobs['jid']:
+		jid = i
+		readJobs(jid) // get and read each job json file
+		
+
+def readJob(jid)
+	job = json.load(GET /jobs/jid) // get job in json format using saltstack rest API request 
+	
+	
+	for i in jobs // check fields ID and Result
+		if i['Result'] == True 
+			print(pass)
+		else if i['Results'] == False
+			print(failed + rerun)
+			rerunFile(i['ID']) // rerun specific file in job using file ID
+
+
+///////////ALTERNATIVE: If checking and running whole job ///////
+	job.getStatus
+	if status == 200
+		pass
+	else if status == 400
+		fail
+		rerunJob(jid)
+////////////////////////////////////////////////////////
+
+
+def rerunJob(fileID)
+	rerun fileID 
+	//Code to rerun file from fileID again
+
+
+		
