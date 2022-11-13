@@ -4,7 +4,7 @@
 import dependencies
 
 
-def getJobs()
+def getJobs() 
 	
 	allJobs = json.load(GET /jobs) // this function get all results (jid) in json format using saltstack rest API request. json.load decodes the json dictionary
 
@@ -18,11 +18,11 @@ def readJob(jid) //this is i
 	job = json.load(GET /jobs/jid) // get job in json format using saltstack rest API request. what will be returned will be the highstate for that specific job
 	
 	
-	for i in job // stores each value in i
-		if i['ID'] == apply_vive_settings
-			if i['Result'] == True 
+	for i in job // stores each value in i. iterating through the file
+		if i['ID'] == "apply_vive_settings"
+			if i['Result'] == "True"
 				print(pass)
-			else if i['Results'] == False
+			else if i['Result'] == "False"
 				print(failed + rerun)
 				rerunFile(i['ID']) // rerun specific file in job using file ID
 
