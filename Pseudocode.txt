@@ -2,13 +2,13 @@ import salt.config
 import requests
 import json
 
-request = requests.get('https://localhost:8000/jobs/JID') # uses requests to fetch all previously ran jobs with that specific JID. so in this case we would use the vive settings JID
+request = requests.get('https://localhost:8000/jobs') # uses requests to fetch all previously ran jobs.
 
 with open("data.json", "w") as json_file:
     json_obj = json.dump(requsts)
     data = json_file.write(json_obj)
     #general idea here is to create a json file containing all previously ran salt jobs with the specific JID mentioned above 
-    #file would contain Functions, minions, starttime, target, target, target-type, jid
+    #file would contain function, target, starttime
 
 
   #open json files
@@ -41,7 +41,7 @@ with open("data.json", "w") as json_file:
     def run_state(): # method would essentially run the state on all pods that are in the mismatching list.
 
         for i in mismatching_pcs:
-            request.post('https://localhost:8000/jobs/state.apply')
+            #run salt state for mismatching pcs.
     
     run_state()
 
