@@ -2,6 +2,8 @@ import salt.config
 import requests
 import json
 
+#dependencies 
+
 request = requests.get('https://localhost:8000/jobs') # uses requests to fetch all previously ran jobs.
 
 with open("data.json", "w") as json_file:
