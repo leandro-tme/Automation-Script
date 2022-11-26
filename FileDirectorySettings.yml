@@ -1,0 +1,12 @@
+file_client: local # Set as local to be able to run it from our PC
+use_master_when_local: True # Normally this option is set as False but since we want to execute states remotely.
+# Directory path to be filled according to how the minion config file is set up.
+file_roots:
+  base:
+    - /srv/salt/top.sls # This is used to replicate the master config's enviroment
+  dev:
+    - /srv/salt/dev/services
+    - /srv/salt/dev/states
+  prod:
+    - /srv/salt/prod/services
+    - /srv/salt/prod/states

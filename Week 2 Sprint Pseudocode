@@ -1,4 +1,5 @@
 "Imported Leo's script to implement it accross other PC's via Saltstack API through the use of minions"
+"Another approach is to setup a masterless minion in order to run states from 2nd line PC to the target minion"
 import salt.config
 import requests
 import json
@@ -38,7 +39,7 @@ with open("data.json", "w") as json_file:
             go to next
             
         else:
-            d2 = matches[0]          #if dic/exists, then we look for matches
+            d2 = matches[0] #if dic/exists, then we look for matches
             for key in d1:
                 if d1.get(key) != d2.get(key):
                     add value to a mismatching list
