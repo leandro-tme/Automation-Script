@@ -1,4 +1,4 @@
-apply_vive_settings:
+reapply_vive_settings: #package name
   file.serialize:
     - name: /etc/apply_vive_settings/apply_vive_settings.conf #To be changed to the actual directory address of the minion
     - source: salt://apply_vive_settings/files/apply_vive_settings.conf # We assuming this is the directory location for the config file.

@@ -1,0 +1,12 @@
+import os
+import shutil #Importing required libraries
+import filecmp
+
+dir1 = "C:/Users/VR/Desktop/Settings.db"
+dir2 = "C:/Users/VR/AppData/Local/Packages/33C30B79.HyperXNGenuity_0a78dr3hq0pvt/LocalState/Settings/Settings.db" #Settings directories we will use for file comparisons
+
+match, mismatch, errors = filecmp.cmpfiles(dir1, dir2, common, shallow = False) # The following line will start comparing the two stated directories and note down relevant data in its corresponding list
+
+if mismatch == "Settings.db":
+   
+
