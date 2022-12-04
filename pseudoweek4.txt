@@ -1,0 +1,11 @@
+from pywinauto.application import Application
+
+app = Application(backend="uia").start("fullpathofapplication")
+app = Application(backend="uia").connect(
+    "title= title of application"
+    timeout=100)  # this command allows us to connect to apps backend. timout allows you to wait for applictions to load.
+app.HyperXNgenuity.print_control_identifiers() # prints all control identifiers in the application. it essentially shows us every controllable field in the form a tree
+
+automatedObject = app.HyperXNgenuity.child_item("fields inside here will depend on control identifiers").wrapper_object() # general layout when trying to initialise an object
+automatedObject.click_input() #will click on the field previously initialised 
+
