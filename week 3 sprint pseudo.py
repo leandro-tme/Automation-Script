@@ -1,7 +1,6 @@
 # For this weeks sprint we are working with ngenuity to check the profiles so that each pc has consistent hyperx profiles
 # credit to musfik for discovering shutil and filecmp to compare and replace existing files for hyperx profile settings.
 
-import dependencies
 import os
 import shutil # this module can be used to copy files from the source to the destination
 import filecmp # filecmp is a module that can be used to compare different files and give us the results of matches or mismatched files
