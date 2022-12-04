@@ -1,3 +1,8 @@
+"""
+Plan:
+Use the filecmp library to do a deep comparison which allows us to find any mismatched files
+The library shutil comes in handy for us to be able to copy the settings file whenever the mismatch happens as it indicates us that the headphones will not have the correct profile set which is why the program proceeds to copy the file in the directory we stated.
+"""
 import os
 import shutil #Importing required libraries
 import filecmp
@@ -7,6 +12,8 @@ dir2 = "C:/Users/VR/AppData/Local/Packages/33C30B79.HyperXNGenuity_0a78dr3hq0pvt
 
 match, mismatch, errors = filecmp.cmpfiles(dir1, dir2, common, shallow = False) # The following line will start comparing the two stated directories and note down relevant data in its corresponding list
 
-if mismatch == "Settings.db":
-   
+if mismatch == "Settings.db": # After the file comparison we have an indication of what files might not be equal, if the settings file is not the same that means it does not have the right profile.
+   shutil.copyfile('Settings.db', dir2) # The following line of code will copy and paste the correct file into the directory where the profiles are stored.
 
+else:
+    print("The headphones have the correct profile running.") # If the right profile is selected the code will break the iteration and retun an output to the user.
