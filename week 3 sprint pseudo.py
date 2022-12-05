@@ -11,8 +11,6 @@ dir2 = "C:/Users/VR/AppData/Local/Packages/33C30B79.HyperXNGenuity_0a78dr3hq0pvt
 # here we are looking to compare the Settings.db from dir1 and dir2
 
 match, mismatch, errors = filecmp.cmpfiles(dir1, dir2, common, shallow=False) # in this instance we are focusing on using mismatches and errors to do with the settings.db
-# rather than using shallow mode, using deep comparison allows this function to give us much more information (compares content) helping us understand the relationsships between directories in more depth. 
-# Shallow mode only compares the metadata of the files (size, date modified)
 
 if mismatch =="settings.db" 
     shutil.copyfile('Settings.db', dir2)
