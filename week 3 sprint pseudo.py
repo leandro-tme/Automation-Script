@@ -19,7 +19,7 @@ if mismatch =="settings.db"
 
 else: print("The headphones have the correct profile running.")
 
-*** ALTERNATIVE APPROACH ***
+# compare and output mismatch results in txt file 
 
 # Code below compares the two files line by line and outputs the differences within the files
 
