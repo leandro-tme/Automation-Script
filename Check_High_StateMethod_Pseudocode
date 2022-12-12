@@ -29,7 +29,7 @@ if mismatch == "data.db/state.apply.conf": # After the file comparison we have a
        vive_settings.raise_for_status() #No Exception will be thrown if the request we get back is 200 (success) as we are not worried if the request is completed with no problems.
 
     except Exception as 400: #Assuming we can take '400' as an integer variable.
-      failed_pods.append(row) #When a bad request is thrown, all the corresponding pods will be added to a new list. Which we will use to reapply the settings.
+      failed_pods.append(i) #When a bad request is thrown, all the corresponding pods will be added to a new list. Which we will use to reapply the settings.
       print(f'Vive settings were not applied correctly due to bad request: {400}')
 
       def __virtual_vive_viveconsole_settings__():
