@@ -1,0 +1,52 @@
+"""
+Plan:
+Use the filecmp library to do a deep comparison which allows us to find any mismatched files from the directory in which we will from Leo's data fetching method
+There will be three approaches in which we could re-apply the correct salt state:
+Using requests and def __virtual_vive_viveconsole_settings__(): method
+Using an automated salt package (the one I used during the second week sprint)
+Or using the shutil library to deploy the correct state into the mismatched pods
+Ideally method 1 or 3 seem the most reliable, method 3 seems the most efficient and simple to implement whereas method 1 would be a good integration since it links back to the data fetching method as it is reliant on requests.
+"""
+import salt.config
+import os
+import shutil #Importing required libraries
+import filecmp
+import requests
+import logging
+
+failed_pods = []
+dir1 = "C:/Users/Local/Desktop/state.apply.conf"
+dir2 = "C:/Users/Local/Data_Fetching_method/data.db/state.apply.conf" #File directories we will use for file comparisons
+
+match, mismatch, errors = filecmp.cmpfiles(dir1, dir2, common, shallow = False) # The following line will start comparing the two stated directories and note down relevant data in its corresponding list
+
+if mismatch == "data.db/state.apply.conf": # After the file comparison we have an indication of what files might not be equal, if the settings file is not the same that means it does not have the right profile.
+   
+   #Below we have method 1
+   for i in mismatch:
+    try:
+       vive_settings = request.get('https://localhost:8000/jobs/state.apply,conf') #This is where we would get the corresponding ID for apply_vive_settings so we can look at which jobs come back with 400 bad request.
+       vive_settings.raise_for_status() #No Exception will be thrown if the request we get back is 200 (success) as we are not worried if the request is completed with no problems.
+
+    except Exception as 400: #Assuming we can take '400' as an integer variable.
+      failed_pods.append(row) #When a bad request is thrown, all the corresponding pods will be added to a new list. Which we will use to reapply the settings.
+      print(f'Vive settings were not applied correctly due to bad request: {400}')
+
+      def __virtual_vive_viveconsole_settings__():
+         while vive_settings.status_code == 400:
+            for i in failed_pods:
+               request.post('https://localhost:8000/jobs/state.apply') # We execute the following post request to apply the state.apply to get the correct apply_vive_settings being to the pods that failed earlier during their scheduled jobs. (We just need the corresponding ID for state.apply to get this request to work.)
+         else:
+            log.info("The vive_settings were applied correctly during schedule!")
+      __virtual_vive_viveconsole_settings__() 
+   
+   
+   
+   with open('automationscript.yaml') as f:
+    script = yaml.load(f, Loader=SafeLoader) # We initialise the yaml file in order to execute it to the corresponding PCs
+    exec(script['automationscript.yaml'], mismatch) # (Method n2)
+
+   shutil.copyfile('data.db/state.apply.conf', dir2) # The following line of code will copy and paste the correct file into the directory where the profiles are stored. (Method n3)
+
+else:
+    print("The headphones have the correct profile running.") # If the right profile is selected the code will break the iteration and retun an output to the user.

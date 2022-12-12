@@ -3,7 +3,7 @@ reapply_vive_settings: #package name
     - name: /etc/apply_vive_settings/apply_vive_settings.conf #To be changed to the actual directory address of the minion
     - source: salt://apply_vive_settings/files/apply_vive_settings.conf # We assuming this is the directory location for the config file.
   cmd.run:
-    -name: /usr/local/desktop/automationscript # Declaring what file to run when the onchange requisite is triggered
+    -name: /user/local/desktop/automationscript # Declaring what file to run when the onchange requisite is triggered
     -onchanges:
        - file: /etc/apply_vive_settings/apply_vive_settings.conf # This tells the script to look out for any changes within the declared state.
 
