@@ -1,1 +1,21 @@
-"file containing minion key and different venue pcs"
+[
+    {
+      "name": "John",
+      "age": 30,
+      "email": "john@example.com"
+    },
+    {
+      "name": "Alice",
+      "age": 25
+    },
+    {
+      "name": "Bob",
+      "age": 35,
+      "email": "bob@example.com"
+    },
+    {
+      "name": "Eve",
+      "age": 40
+    }
+  ]
+  
