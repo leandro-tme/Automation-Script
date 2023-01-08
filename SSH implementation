@@ -1,0 +1,4 @@
+#The ssh key will be sorted out within SaltStack master config making a seamless integration of OpenSSH within SaltStack.
+
+import os
+os.system('cmd /k "salt-ssh -i 'web*' network.interfaces"') # The following line will approve the key on the remote system and will prevent any further authentication prompts
